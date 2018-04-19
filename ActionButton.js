@@ -52,7 +52,7 @@ export default class ActionButton extends Component {
   }
 
   getActionButtonStyle() {
-    return [styles.actionBarItem, this.getButtonSize(), this.props.actionButtonWrapperStyle];
+    return [styles.actionBarItem, this.getButtonSize()];
   }
 
   getActionContainerStyle() {
@@ -240,13 +240,17 @@ export default class ActionButton extends Component {
         style={styles.overlay}
       >
         {backdrop}
-
-        {this.props.children && this.renderActions()}
         <View
           pointerEvents="box-none"
-          style={this.getActionContainerStyle()}
+          style={[styles.actionButtonWrapperStyle, this.props.actionButtonWrapperStyle]}
         >
-          {this.renderButton()}
+          {this.props.children && this.renderActions()}
+          <View
+            pointerEvents="box-none"
+            style={this.getActionContainerStyle()}
+          >
+            {this.renderButton()}
+          </View>
         </View>
       </View>
     );
@@ -330,5 +334,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     backgroundColor: 'transparent',
     position: 'relative',
+  },
+  actionButtonWrapperStyle: {
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
   },
 });
