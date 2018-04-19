@@ -52,7 +52,7 @@ export default class ActionButton extends Component {
   }
 
   getActionButtonStyle() {
-    return [styles.actionBarItem, this.getButtonSize()];
+    return [styles.actionBarItem, this.getButtonSize(), this.props.actionButtonWrapperStyle];
   }
 
   getActionContainerStyle() {
@@ -293,6 +293,7 @@ ActionButton.defaultProps = {
   radius: 100,
   btnOutRange: 'rgba(0,0,0,1)',
   btnOutRangeTxt: 'rgba(255,255,255,1)',
+  actionButtonWrapperStyle: {},
 };
 
 const styles = StyleSheet.create({
